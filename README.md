@@ -11,13 +11,13 @@ Claude Code 의 `/` 슬래시 커맨드 설명, `/config` 항목, 일부 화면 
 | --- | --- | --- |
 | `/` 입력 시 나오는 슬래시 커맨드 설명 (내장 커맨드, 스킬, 플러그인) | `command.describe` | 확인함 |
 | `/config` 항목 이름 (44개) | `config.describe` | 확인함 |
-| 작업 중 표시 (Spinner) 의 단어 | `ui.render` `Spinner` | 검증만 통과 |
-| 턴 종료 줄 (`Baked for 3s` → `✻ 3초 동안 작업했습니다`) | `ui.render` `TurnDuration` | 검증만 통과 |
-| 접힌 도구 호출 요약 (`Read 3 files` → `파일 3개 읽음`) | `ui.render` `ToolGroup` | 검증만 통과 |
-| `(ctrl+b to run in background)` 안내 | `ui.render` `ToolProgress` | 검증만 통과 |
+| 작업 중 표시 (Spinner) 의 단어 | `ui.render` `Spinner` | 확인함 |
+| 턴 종료 줄 (`Baked for 3s` → `✻ 3초 동안 작업했습니다`) | `ui.render` `TurnDuration` | 확인함 |
+| 접힌 도구 호출 요약 (`Read 3 files` → `파일 3개 읽음`) | `ui.render` `ToolGroup` | 확인함 |
+| `(ctrl+b to run in background)` 안내 | `ui.render` `ToolProgress` | 확인함 |
 | 커맨드 출력 줄 (`Set … to …`, 색상 설정 등), 시작 알림, 푸터 모드 라벨, 백그라운드 작업 알림 | `ui.render` + `dict.json` 의 `patterns` | 일부 문구만 사전에 있음 |
 
-"확인함" 은 실제 세션에서 한국어로 뜨는 것을 본 항목이고, "검증만 통과" 는 `claude plugin validate` 는 통과했지만 화면에서 직접 확인하지는 못한 항목입니다. 동작이 이상하면 이슈로 알려 주세요.
+"확인함" 은 Claude Code 2.1.289 (Windows) 의 실제 세션에서 한국어로 뜨는 것을 본 항목입니다. 마지막 줄의 출력 문구는 훅은 걸려 있지만 사전에 들어 있는 문구만 번역됩니다. 영어로 남은 문구는 `/ko-dump` 로 확인해 `dict.json` 에 추가하거나 이슈로 알려 주세요.
 
 ## 번역할 수 없는 것
 
@@ -29,7 +29,7 @@ mod API 에 훅이 없는 화면은 건드릴 수 없습니다. 번들 파일을
 
 ## 설치
 
-Claude Code **2.1.287 이상**이 필요합니다. 2.1.289, Windows 에서 만들고 시험했습니다.
+Claude Code **2.1.287 이상**이 필요합니다. 2.1.289, Windows 에서 만들고 시험했습니다. 2.1.285 에서는 mod 가 기본으로 꺼져 있어서 `CLAUDE_CODE_ENABLE_FUNCTION_HOOKS=1` 환경 변수를 켜야 로드됩니다. 이 경우에도 `/ko-dump` 동작은 확인했습니다.
 
 ```sh
 git clone https://github.com/moduvoice/claude-code-ko-ui
