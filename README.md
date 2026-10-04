@@ -62,6 +62,7 @@ claude --plugin-dir ./claude-code-ko-ui
 | `commands` | 슬래시 커맨드 이름 → 한국어 설명 |
 | `config` | `/config` 키 → `{ label, description }` |
 | `patterns` | 커맨드 출력 줄에 적용할 정규식 `{ re, to }` 목록 |
+| `descPatterns` | 현재 상태가 문구에 들어가는 커맨드 설명(예: `/sandbox`)에 적용할 정규식 목록. 고정 번역을 넣으면 상태가 바뀔 때 틀려지는 경우에 씁니다. |
 | `promptHints` | 프롬프트 아래 힌트 문구 (문장 전체가 한국어가 될 때만 적용) |
 | `modes` | 푸터 모드 라벨 |
 
