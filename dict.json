@@ -140,6 +140,11 @@
     { "re": "^설정 변경: (.+) → on$", "to": "설정 변경: $1 → 켜짐" },
     { "re": "^설정 변경: (.+) → off$", "to": "설정 변경: $1 → 꺼짐" }
   ],
+  "descPatterns": [
+    { "re": "sandbox disabled", "to": "샌드박스 꺼짐" },
+    { "re": "sandbox enabled", "to": "샌드박스 켜짐" },
+    { "re": "[(]⏎ to configure[)]", "to": "(⏎ 로 설정)" }
+  ],
   "promptHints": {
     "? for shortcuts": "? 를 누르면 단축키 보기",
     "esc to interrupt": "esc 로 중단"

@@ -5,6 +5,7 @@ type Dict = {
   hints: Record<string, string>
   config: Record<string, { label?: string; description?: string }>
   patterns: { re: string; to: string }[]
+  descPatterns: { re: string; to: string }[]
   promptHints: Record<string, string>
   modes: Record<string, string>
 }
@@ -14,6 +15,7 @@ const EMPTY: Dict = {
   hints: {},
   config: {},
   patterns: [],
+  descPatterns: [],
   promptHints: {},
   modes: {},
 }
@@ -63,6 +65,19 @@ function tr(d: Dict, text: string): string {
   for (const p of d.patterns) {
     try {
       out = out.replace(new RegExp(p.re, 'gm'), p.to)
+    } catch {
+      // 잘못된 정규식은 건너뛴다
+    }
+  }
+  return out
+}
+
+// 상태가 문구에 들어가는 동적 커맨드 설명(예: /sandbox)을 패턴으로 번역한다.
+function trDesc(d: Dict, text: string): string {
+  let out = text
+  for (const p of d.descPatterns) {
+    try {
+      out = out.replace(new RegExp(p.re, 'g'), p.to)
     } catch {
       // 잘못된 정규식은 건너뛴다
     }
@@ -186,7 +201,7 @@ export const register: Register = on => {
     const r = await next(e)
     return {
       ...r,
-      description: d.commands[e.command] ?? r.description,
+      description: d.commands[e.command] ?? trDesc(d, r.description),
       argumentHint: r.argumentHint && (d.hints[e.command] ?? r.argumentHint),
     }
   })
