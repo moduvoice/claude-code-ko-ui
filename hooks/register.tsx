@@ -306,7 +306,7 @@ export const register: Register = on => {
     const { Box, Text } = $.ui.resolve(e)
     return (
       <Box flexDirection="row">
-        <Text>
+        <Text dimColor>
           ● {line}
           {e.props.isActive ? '…' : ''}
         </Text>
