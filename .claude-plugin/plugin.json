@@ -1,0 +1,9 @@
+{
+  "name": "ko-ui",
+  "version": "0.1.0",
+  "description": "Claude Code 의 슬래시 커맨드 설명, /config 항목, 일부 화면 문구를 한국어로 보여주는 번역 사전 mod (Korean UI translation dictionary mod)",
+  "author": { "name": "moduvoice" },
+  "license": "MIT",
+  "repository": "https://github.com/moduvoice/claude-code-ko-ui",
+  "keywords": ["korean", "한국어", "i18n", "localization", "translation", "claude-code-mod"]
+}
